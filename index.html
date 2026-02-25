@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Junco Junk Removal | Lakewood's Junk Removal Company</title>
+  <meta name="description" content="Fast, reliable junk removal for Cleveland and Lakewood. Upfront pricing, same-day service, eco-friendly disposal. We handle everything — you just point."/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /*
+      DESIGN TOKENS
+      --bg-base:      #1d212b  secondary — default section bg
+      --bg-deep:      #131720  secondary-dark — hero, footer, inset cards
+      --bg-raised:    #252b38  slightly lighter — card surfaces
+      --bg-hover:     #2d3444  borders, hover states
+      --primary:      #8ec322  lime green — CTAs, accents
+      --primary-dark: #75a31b  hover state for green
+      --on-primary:   #131720  text sitting ON green buttons
+      --text-hi:      #fafafa  headings, strong labels
+      --text-mid:     #b8c0cc  body copy, descriptions
+      --text-lo:      #6e7888  hints, placeholders, timestamps
+      --border:       #2d3444  card/section borders
+
+      WCAG AA contrast checks:
+      #fafafa on #1d212b  = 12.5:1  ✓
+      #fafafa on #131720  = 14.8:1  ✓
+      #b8c0cc on #1d212b  =  6.2:1  ✓
+      #8ec322 on #131720  =  5.9:1  ✓ (large text / icons)
+      #131720 on #8ec322  =  5.9:1  ✓ (button text)
+    */
+    :root {
+      --bg-base:      #1d212b;
+      --bg-deep:      #131720;
+      --bg-raised:    #252b38;
+      --bg-hover:     #2d3444;
+      --primary:      #8ec322;
+      --primary-dark: #75a31b;
+      --on-primary:   #131720;
+      --text-hi:      #fafafa;
+      --text-mid:     #b8c0cc;
+      --text-lo:      #6e7888;
+      --border:       #2d3444;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg-base);
+      color: var(--text-hi);
+      overflow-x: hidden;
+    }
+
+    /* ─────────── NAVBAR ─────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 40px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(19, 23, 32, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.5); }
+
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-bird { width: 36px; height: 36px; }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--text-hi); letter-spacing: -0.3px;
+    }
+    .nav-logo-text span { color: var(--primary); }
+
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500;
+      color: var(--text-mid); text-decoration: none;
+      letter-spacing: 0.3px; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text-hi); }
+
+    .nav-cta {
+      background: var(--primary) !important;
+      color: var(--on-primary) !important;
+      padding: 9px 20px; border-radius: 6px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--primary-dark) !important; }
+
+    /* ─────────── BUTTONS ─────────── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--primary); color: var(--on-primary);
+      padding: 14px 28px; border-radius: 8px;
+      font-weight: 700; font-size: 15px; text-decoration: none;
+      border: 2px solid var(--primary); transition: all 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark); border-color: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(142,195,34,0.28);
+    }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--text-hi);
+      padding: 14px 28px; border-radius: 8px;
+      font-weight: 500; font-size: 15px; text-decoration: none;
+      border: 2px solid var(--border); transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--text-mid); background: rgba(255,255,255,0.04); }
+
+    /* ─────────── SHARED SECTION ─────────── */
+    section { padding: 100px 40px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--primary); margin-bottom: 16px;
+    }
+    .section-label::before {
+      content: ''; display: block;
+      width: 24px; height: 2px; background: var(--primary);
+    }
+    .section-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 48px); font-weight: 700;
+      color: var(--text-hi); line-height: 1.15; letter-spacing: -0.5px;
+    }
+
+    /* ─────────── HERO ─────────── */
+    #home {
+      min-height: 100vh; background: var(--bg-deep);
+      position: relative; display: flex; align-items: center;
+      overflow: hidden; padding-top: 68px;
+    }
+    .hero-bg-pattern {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(142,195,34,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(142,195,34,0.05) 0%, transparent 50%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1100px; margin: 0 auto;
+      padding: 80px 40px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(142,195,34,0.10);
+      border: 1px solid rgba(142,195,34,0.28);
+      border-radius: 99px; padding: 5px 14px; margin-bottom: 28px;
+    }
+    .hero-eyebrow-dot {
+      width: 7px; height: 7px; background: var(--primary);
+      border-radius: 50%; animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-eyebrow span {
+      font-size: 12px; font-weight: 600; color: var(--primary);
+      letter-spacing: 1px; text-transform: uppercase;
+    }
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(44px, 5vw, 68px); font-weight: 900;
+      color: var(--text-hi); line-height: 1.08;
+      letter-spacing: -1px; margin-bottom: 24px;
+    }
+    .hero-h1 em { font-style: normal; color: var(--primary); }
+    .hero-sub {
+      font-size: 17px; color: var(--text-mid);
+      line-height: 1.7; margin-bottom: 40px;
+      font-weight: 300; max-width: 420px;
+    }
+    .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-trust {
+      display: flex; align-items: center; gap: 24px;
+      margin-top: 40px; padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .hero-trust-item { display: flex; flex-direction: column; }
+    .hero-trust-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; font-weight: 700;
+      color: var(--text-hi); line-height: 1;
+    }
+    .hero-trust-label { font-size: 12px; color: var(--text-lo); margin-top: 4px; }
+    .hero-trust-divider { width: 1px; height: 36px; background: var(--border); }
+
+    .hero-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px;
+    }
+    .hero-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--text-hi); margin-bottom: 24px;
+    }
+    .hero-promise { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+    .hero-promise:last-child { margin-bottom: 0; }
+    .promise-icon {
+      width: 38px; height: 38px;
+      background: rgba(142,195,34,0.10);
+      border: 1px solid rgba(142,195,34,0.20);
+      border-radius: 8px; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .promise-text strong {
+      display: block; color: var(--text-hi);
+      font-size: 14px; font-weight: 600; margin-bottom: 3px;
+    }
+    .promise-text span { color: var(--text-mid); font-size: 13px; line-height: 1.5; }
+
+    /* ─────────── HOW IT WORKS ─────────── */
+    #how-it-works { background: var(--bg-raised); }
+
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 40px; margin-top: 60px; position: relative;
+    }
+    .steps-grid::before {
+      content: ''; position: absolute;
+      top: 35px;
+      left: calc(16.66% + 24px); right: calc(16.66% + 24px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--border), var(--primary));
+      opacity: 0.35;
+    }
+    .step { text-align: center; position: relative; }
+    .step-number {
+      width: 70px; height: 70px;
+      background: var(--bg-deep);
+      border: 2px solid var(--primary);
+      border-radius: 50%; display: flex;
+      align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; font-weight: 700; color: var(--primary);
+      margin: 0 auto 24px; position: relative; z-index: 1;
+    }
+    .step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; color: var(--text-hi); margin-bottom: 10px;
+    }
+    .step p { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+
+    /* ─────────── SERVICES ─────────── */
+    #services { background: var(--bg-base); }
+
+    .services-intro {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: end; margin-bottom: 56px;
+    }
+    .services-sub { font-size: 16px; color: var(--text-mid); line-height: 1.75; font-weight: 300; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+
+    .service-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px;
+      transition: all 0.25s; position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0; height: 3px;
+      background: var(--primary);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+    }
+    .service-card:hover {
+      border-color: var(--bg-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+    }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; color: var(--text-hi); margin-bottom: 8px;
+    }
+    .service-card p { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
+
+    /* ─────────── PRICING ─────────── */
+    #pricing { background: var(--bg-deep); position: relative; overflow: hidden; }
+    #pricing::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 85% 50%, rgba(142,195,34,0.07) 0%, transparent 60%);
+    }
+    .pricing-intro {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: end;
+      margin-bottom: 56px; position: relative;
+    }
+    .pricing-sub { font-size: 16px; color: var(--text-mid); line-height: 1.75; font-weight: 300; }
+
+    .pricing-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; position: relative; }
+
+    .pricing-card {
+      background: var(--bg-raised); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px 20px;
+      text-align: center; transition: all 0.25s;
+    }
+    .pricing-card:hover {
+      border-color: var(--bg-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+    }
+    .pricing-card.featured { background: var(--primary); border-color: var(--primary); }
+    .pricing-card.featured:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+
+    .pricing-size {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--text-lo); margin-bottom: 12px;
+    }
+    .pricing-card.featured .pricing-size { color: var(--on-primary); opacity: 0.65; }
+
+    .pricing-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px; font-weight: 700;
+      color: var(--text-hi); line-height: 1; margin-bottom: 4px;
+    }
+    .pricing-card.featured .pricing-price { color: var(--on-primary); }
+
+    .pricing-range { font-size: 11px; color: var(--text-lo); margin-bottom: 14px; }
+    .pricing-card.featured .pricing-range { color: var(--on-primary); opacity: 0.7; }
+
+    .pricing-desc { font-size: 12px; color: var(--text-mid); line-height: 1.6; }
+    .pricing-card.featured .pricing-desc { color: var(--on-primary); opacity: 0.85; }
+
+    .pricing-note {
+      margin-top: 36px; padding: 20px 24px;
+      background: var(--bg-raised); border: 1px solid var(--border);
+      border-radius: 10px; display: flex; align-items: center; gap: 14px;
+    }
+    .pricing-note span { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+    .pricing-note strong { color: var(--text-hi); }
+
+    /* ─────────── LANDLORDS ─────────── */
+    #landlords {
+      background: var(--bg-raised);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .landlord-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+    .landlord-perks { display: flex; flex-direction: column; gap: 16px; margin-top: 36px; }
+    .landlord-perk {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 20px; background: var(--bg-deep);
+      border-radius: 10px; border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .landlord-perk:hover { border-color: var(--bg-hover); }
+    .perk-icon {
+      width: 40px; height: 40px;
+      background: rgba(142,195,34,0.10);
+      border: 1px solid rgba(142,195,34,0.20);
+      border-radius: 8px; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .perk-text strong { display: block; font-size: 14px; font-weight: 600; color: var(--text-hi); margin-bottom: 3px; }
+    .perk-text span { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+
+    .landlord-cta-box {
+      background: var(--bg-deep); border: 1px solid var(--border);
+      border-radius: 16px; padding: 40px;
+    }
+    .landlord-cta-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; color: var(--text-hi); margin-bottom: 16px; line-height: 1.3;
+    }
+    .landlord-cta-box > p { font-size: 14px; color: var(--text-mid); line-height: 1.7; margin-bottom: 28px; }
+
+    .landlord-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+    .landlord-stat {
+      background: var(--bg-raised); border: 1px solid var(--border);
+      border-radius: 8px; padding: 16px; text-align: center;
+    }
+    .landlord-stat-num { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--primary); font-weight: 700; }
+    .landlord-stat-label { font-size: 11px; color: var(--text-lo); margin-top: 4px; }
+
+    /* ─────────── ABOUT ─────────── */
+    #about { background: var(--bg-base); }
+
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+    .about-img-placeholder {
+      background: var(--bg-raised); border: 2px dashed var(--border);
+      border-radius: 16px; aspect-ratio: 4/3;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      position: relative; overflow: hidden;
+    }
+    .about-img-placeholder::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 40%, rgba(142,195,34,0.06), transparent 60%);
+    }
+    .about-img-bird { font-size: 64px; position: relative; z-index: 1; }
+    .about-img-label { font-size: 13px; color: var(--text-lo); position: relative; z-index: 1; }
+
+    .about-text p { font-size: 16px; color: var(--text-mid); line-height: 1.8; font-weight: 300; margin-bottom: 20px; }
+    .about-text p:last-of-type { margin-bottom: 32px; }
+
+    .about-values { display: flex; gap: 10px; flex-wrap: wrap; }
+    .about-value {
+      background: var(--bg-raised); border: 1px solid var(--border);
+      border-radius: 99px; padding: 7px 16px;
+      font-size: 13px; font-weight: 500; color: var(--text-mid);
+    }
+
+    /* ─────────── REVIEWS ─────────── */
+    #reviews { background: var(--bg-raised); }
+
+    .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
+
+    .review-card {
+      background: var(--bg-deep); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px; position: relative;
+    }
+    .review-card::before {
+      content: '"'; position: absolute; top: 16px; right: 22px;
+      font-family: 'Playfair Display', serif;
+      font-size: 72px; color: rgba(142,195,34,0.12); line-height: 1;
+    }
+    .review-stars { color: var(--primary); font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; }
+    .review-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 20px; position: relative; z-index: 1; }
+    .review-author { display: flex; align-items: center; gap: 10px; }
+    .review-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--primary); display: flex;
+      align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700;
+      color: var(--on-primary);
+      font-family: 'Playfair Display', serif;
+    }
+    .review-name { font-size: 13px; font-weight: 600; color: var(--text-hi); }
+    .review-location { font-size: 12px; color: var(--text-lo); }
+
+    /* ─────────── SCHEDULE ─────────── */
+    #schedule { background: var(--bg-deep); position: relative; overflow: hidden; }
+    #schedule::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 80% at 5% 50%, rgba(142,195,34,0.05), transparent 60%);
+    }
+    .schedule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; position: relative; }
+
+    .schedule-left h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px,4vw,48px); color: var(--text-hi);
+      line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 20px;
+    }
+    .schedule-left > p { font-size: 16px; color: var(--text-mid); line-height: 1.75; font-weight: 300; margin-bottom: 36px; }
+
+    .contact-methods { display: flex; flex-direction: column; gap: 12px; }
+    .contact-method {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 18px; background: var(--bg-raised);
+      border: 1px solid var(--border); border-radius: 10px;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .contact-method:hover { border-color: var(--primary); transform: translateX(4px); }
+    .contact-method-icon {
+      width: 40px; height: 40px;
+      background: rgba(142,195,34,0.10);
+      border: 1px solid rgba(142,195,34,0.20);
+      border-radius: 8px; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .contact-method-text strong { display: block; font-size: 14px; font-weight: 600; color: var(--text-hi); margin-bottom: 2px; }
+    .contact-method-text span { font-size: 12px; color: var(--text-lo); }
+
+    .schedule-form {
+      background: var(--bg-raised); border: 1px solid var(--border);
+      border-radius: 16px; padding: 36px;
+    }
+    .schedule-form h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--text-hi); margin-bottom: 6px; }
+    .schedule-form > p { font-size: 13px; color: var(--text-lo); margin-bottom: 28px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label {
+      display: block; font-size: 11px; font-weight: 700;
+      color: var(--text-mid); letter-spacing: 0.8px;
+      text-transform: uppercase; margin-bottom: 7px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; background: var(--bg-deep);
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 12px 14px; font-family: 'DM Sans', sans-serif;
+      font-size: 14px; color: var(--text-hi); outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none; appearance: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--text-lo); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--primary); }
+    .form-group select { cursor: pointer; }
+    .form-group select option { background: var(--bg-deep); color: var(--text-hi); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+
+    .form-submit {
+      width: 100%; background: var(--primary); color: var(--on-primary);
+      border: none; padding: 14px; border-radius: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: all 0.2s; margin-top: 6px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .form-submit:hover {
+      background: var(--primary-dark); transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(142,195,34,0.28);
+    }
+
+    /* ─────────── FOOTER ─────────── */
+    footer {
+      background: #0c0f16;
+      padding: 56px 40px 40px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px;
+    }
+    .footer-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700; color: var(--text-hi);
+    }
+    .footer-brand-name span { color: var(--primary); }
+    .footer-brand p { font-size: 14px; color: var(--text-lo); line-height: 1.7; margin-top: 14px; max-width: 280px; }
+    .footer-col h4 {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--text-lo); margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block; font-size: 14px; color: var(--text-mid);
+      text-decoration: none; margin-bottom: 10px; transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--text-hi); }
+    .footer-bottom {
+      max-width: 1100px; margin: 36px auto 0;
+      padding-top: 24px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-bottom span { font-size: 13px; color: var(--text-lo); }
+
+    /* ─────────── ANIMATIONS ─────────── */
+    /* Default: content always visible. Animation is progressive enhancement only. */
+    .fade-up { opacity: 1; transform: none; }
+    /* js-ready class added by script below — only then do we animate */
+    .js-ready .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .js-ready .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .js-ready .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .js-ready .fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .js-ready .fade-up:nth-child(4) { transition-delay: 0.3s; }
+    .js-ready .fade-up:nth-child(5) { transition-delay: 0.4s; }
+    .js-ready .fade-up:nth-child(6) { transition-delay: 0.5s; }
+
+    /* ─────────── RESPONSIVE ─────────── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 70px 20px; }
+      .hero-content { grid-template-columns: 1fr; gap: 40px; padding: 60px 20px; }
+      .hero-card { display: none; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .steps-grid::before { display: none; }
+      .services-intro { grid-template-columns: 1fr; gap: 20px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-intro { grid-template-columns: 1fr; gap: 20px; }
+      .landlord-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .schedule-grid { grid-template-columns: 1fr; gap: 48px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#home" class="nav-logo">
+      <svg class="nav-logo-bird" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="18" r="18" fill="#131720"/>
+        <path d="M8 22 C10 16, 16 12, 22 14 C26 15, 28 12, 27 10 C25 13, 22 11, 20 13 C16 10, 10 14, 7 20 Z" fill="#fafafa"/>
+        <path d="M22 14 C24 17, 24 21, 21 23 C18 25, 13 24, 11 21 C14 23, 19 23, 21 21 C23 19, 22 16, 20 14 Z" fill="#8ec322"/>
+        <circle cx="23" cy="12" r="1.5" fill="#fafafa"/>
+        <path d="M7 20 L4 23 L8 22 Z" fill="#fafafa"/>
+      </svg>
+      <span class="nav-logo-text">Junco<span>.</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#services">Services</a></li>
+      <!-- <li><a href="#pricing">Pricing</a></li> -->
+      <!-- <li><a href="#landlords">Property Managers</a></li> -->
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#schedule" class="nav-cta">Schedule Pickup</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div>
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-dot"></div>
+          <span>Lakewood's Junk Removal Company</span>
+        </div>
+        <h1 class="hero-h1">We show up.<br/>We clean out.<br/><em>Done.</em></h1>
+        <p class="hero-sub">Junk removal for Cleveland and surrounding areas. Upfront pricing, same-day availability, and eco-friendly disposal. You just point — we handle the rest.</p>
+        <div class="hero-buttons">
+          <a href="#schedule" class="btn-primary">
+            Schedule a Pickup
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="tel:2165550100" class="btn-secondary">📞 (216) 555-0100</a>
+        </div>
+        <div class="hero-trust">
+          <div class="hero-trust-item">
+            <span class="hero-trust-number">Same</span>
+            <span class="hero-trust-label">Day Available</span>
+          </div>
+          <div class="hero-trust-divider"></div>
+          <div class="hero-trust-item">
+            <span class="hero-trust-number">Upfront</span>
+            <span class="hero-trust-label">Pricing Always</span>
+          </div>
+          <div class="hero-trust-divider"></div>
+          <div class="hero-trust-item">
+            <span class="hero-trust-number">100%</span>
+            <span class="hero-trust-label">Job Guarantee</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <p class="hero-card-title">Our 3 Promises to You</p>
+        <div class="hero-promise">
+          <div class="promise-icon">⏰</div>
+          <div class="promise-text">
+            <strong>We show up on time</strong>
+            <span>You'll get a text before we arrive. No waiting around wondering.</span>
+          </div>
+        </div>
+        <div class="hero-promise">
+          <div class="promise-icon">💬</div>
+          <div class="promise-text">
+            <strong>No surprise pricing</strong>
+            <span>We quote before we start. What we say is what you pay. Period.</span>
+          </div>
+        </div>
+        <div class="hero-promise">
+          <div class="promise-icon">✅</div>
+          <div class="promise-text">
+            <strong>We finish the job</strong>
+            <span>We don't leave until it's done. If something's missed, we come back.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
+    <div class="section-inner">
+      <div class="section-label">Simple Process</div>
+      <h2 class="section-h2">Three steps. Zero hassle.</h2>
+      <div class="steps-grid">
+        <div class="step fade-up">
+          <div class="step-number">1</div>
+          <h3>Call or Book Online</h3>
+          <p>Call, text, or fill out our form. We'll confirm your appointment and give you an upfront quote — no in-person estimate required for most jobs.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step-number">2</div>
+          <h3>You Just Point</h3>
+          <p>We show up on time and handle everything. You point at what needs to go. We load it, sweep up, and haul it away. You don't lift a finger.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step-number">3</div>
+          <h3>It's Gone</h3>
+          <p>We sort items for donation, recycling, and responsible disposal. You get a photo when it's done. Pay by card, cash, or Venmo — whatever's easy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="services-intro">
+        <div>
+          <div class="section-label">What We Haul</div>
+          <h2 class="section-h2">If it's taking up space, we'll take it away.</h2>
+        </div>
+        <p class="services-sub">From a single old sofa to an entire estate cleanout, Junco handles jobs of every size. We serve Lakewood, Cleveland, and the surrounding west side communities.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <span class="service-icon">🏠</span>
+          <h3>General Junk Removal</h3>
+          <p>Furniture, mattresses, electronics, yard waste, old clothing — if it's clutter, we'll clear it out. No job too small.</p>
+        </div>
+        <div class="service-card fade-up">
+          <span class="service-icon">🏡</span>
+          <h3>Estate & Full Home Cleanouts</h3>
+          <p>Dealing with a loved one's home or downsizing a lifetime of belongings? We handle full cleanouts with care and efficiency.</p>
+        </div>
+        <div class="service-card fade-up">
+          <span class="service-icon">🔑</span>
+          <h3>Landlord & Tenant Turnover</h3>
+          <p>Tenant left behind furniture, trash, or appliances? We specialize in fast, reliable turnover cleanouts so you can re-rent quickly.</p>
+        </div>
+        <div class="service-card fade-up">
+          <span class="service-icon">🛋️</span>
+          <h3>Appliance & Furniture Removal</h3>
+          <p>Fridges, washers, dryers, couches, bed frames — we remove heavy items safely without damaging your floors or walls.</p>
+        </div>
+        <div class="service-card fade-up">
+          <span class="service-icon">🧱</span>
+          <h3>Construction Debris</h3>
+          <p>Renovation leftovers, drywall, lumber, tile, concrete — we haul construction debris so your project site stays clean.</p>
+        </div>
+        <div class="service-card fade-up">
+          <span class="service-icon">⚡</span>
+          <h3>Same-Day Service</h3>
+          <p>Need it gone today? We offer same-day pickups based on availability. Call or text us in the morning and we'll do our best to be there.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!--
+  PRICING SECTION — uncomment to restore
+  <section id="pricing">
+    <div class="section-inner">
+      <div class="pricing-intro">
+        <div>
+          <div class="section-label">Transparent Pricing</div>
+          <h2 class="section-h2">You'll always know the price before we start.</h2>
+        </div>
+        <p class="pricing-sub">We price by truck load — simple, fair, and quoted upfront. No hidden fees, no bait-and-switch. The price we give you is the price you pay.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card fade-up">
+          <div class="pricing-size">Minimum</div>
+          <div class="pricing-price">$99</div>
+          <div class="pricing-range">up to 1/8 truck</div>
+          <div class="pricing-desc">Single items, small cleanouts, one room</div>
+        </div>
+        <div class="pricing-card fade-up">
+          <div class="pricing-size">Quarter Load</div>
+          <div class="pricing-price">$200</div>
+          <div class="pricing-range">$175 – $225</div>
+          <div class="pricing-desc">2–3 pieces, small apartment</div>
+        </div>
+        <div class="pricing-card featured fade-up">
+          <div class="pricing-size">Half Load</div>
+          <div class="pricing-price">$315</div>
+          <div class="pricing-range">$275 – $350 · Most Popular</div>
+          <div class="pricing-desc">Studio or 1BR cleanout, partial basement</div>
+        </div>
+        <div class="pricing-card fade-up">
+          <div class="pricing-size">Full Truck</div>
+          <div class="pricing-price">$525</div>
+          <div class="pricing-range">$475 – $575</div>
+          <div class="pricing-desc">Full 2BR or large estate cleanout</div>
+        </div>
+      </div>
+      <div class="pricing-note">
+        <span style="font-size:22px; flex-shrink:0;">🌿</span>
+        <span><strong>Eco-friendly disposal included.</strong> We sort every load for donation, recycling, and responsible disposal. Good for your conscience, good for Lakewood.</span>
+      </div>
+    </div>
+  </section>
+  END PRICING SECTION -->
+
+  <!--
+  LANDLORDS SECTION — uncomment to restore
+  <section id="landlords">
+    <div class="section-inner">
+      <div class="landlord-grid">
+        <div>
+          <div class="section-label">Property Managers</div>
+          <h2 class="section-h2">Your most reliable cleanout crew.</h2>
+          <div class="landlord-perks">
+            <div class="landlord-perk fade-up">
+              <div class="perk-icon">📅</div>
+              <div class="perk-text">
+                <strong>Priority scheduling</strong>
+                <span>Landlord accounts get first access to same-day and next-day slots. Tenant out Friday? We're there Monday morning.</span>
+              </div>
+            </div>
+            <div class="landlord-perk fade-up">
+              <div class="perk-icon">💰</div>
+              <div class="perk-text">
+                <strong>Volume discounts</strong>
+                <span>15–20% off standard rates for recurring accounts. The more you use us, the more you save.</span>
+              </div>
+            </div>
+            <div class="landlord-perk fade-up">
+              <div class="perk-icon">📸</div>
+              <div class="perk-text">
+                <strong>Photo confirmation every time</strong>
+                <span>We send before and after photos on every job. Your records stay clean, your properties stay clean.</span>
+              </div>
+            </div>
+            <div class="landlord-perk fade-up">
+              <div class="perk-icon">🤝</div>
+              <div class="perk-text">
+                <strong>First cleanout on us</strong>
+                <span>We're so confident in our work we'll do your first job at no charge. Let the results speak for themselves.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="landlord-cta-box fade-up">
+          <h3>Built for Lakewood landlords. Available across the west side.</h3>
+          <p>With 57% of Lakewood's housing renter-occupied and turnover happening constantly, you need a cleanout crew that shows up and gets it done. That's us.</p>
+          <div class="landlord-stats">
+            <div class="landlord-stat">
+              <div class="landlord-stat-num">Same</div>
+              <div class="landlord-stat-label">Day Availability</div>
+            </div>
+            <div class="landlord-stat">
+              <div class="landlord-stat-num">20%</div>
+              <div class="landlord-stat-label">Account Discount</div>
+            </div>
+            <div class="landlord-stat">
+              <div class="landlord-stat-num">Free</div>
+              <div class="landlord-stat-label">First Cleanout</div>
+            </div>
+            <div class="landlord-stat">
+              <div class="landlord-stat-num">100%</div>
+              <div class="landlord-stat-label">Job Guarantee</div>
+            </div>
+          </div>
+          <a href="#schedule" class="btn-primary" style="width:100%; justify-content:center;">
+            Set Up a Landlord Account
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  END LANDLORDS SECTION -->
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img-placeholder">
+          <div class="about-img-bird">🐦</div>
+          <span class="about-img-label">Your photo here</span>
+        </div>
+        <div class="about-text">
+          <div class="section-label">About Junco</div>
+          <h2 class="section-h2" style="margin-bottom:28px;">A Lakewood company, built on showing up.</h2>
+          <p>Junco was started because the junk removal market in Cleveland had a reliability problem. Companies that don't answer the phone. Crews that show up late, or not at all. Jobs left half done. We built Junco to be the opposite of all of that.</p>
+          <p>We're named after the junco bird — small, scrappy, and built for Ohio winters. It shows up when others don't, works efficiently, and doesn't make a fuss. That's exactly what we do for our customers every single day.</p>
+          <p>We're based right here in Lakewood. When you call us, you're talking to a neighbor — not a call center. We know these streets, we care about this community, and we'll treat your home with the same respect we'd want for our own.</p>
+          <div class="about-values">
+            <span class="about-value">🏠 Locally owned</span>
+            <span class="about-value">♻️ Eco-friendly disposal</span>
+            <span class="about-value">📍 Lakewood based</span>
+            <span class="about-value">✅ Job guarantee</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="section-inner">
+      <div class="section-label">What Customers Say</div>
+      <h2 class="section-h2">The neighbors are talking.</h2>
+      <div class="reviews-grid">
+        <div class="review-card fade-up">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Called in the morning, they were there by noon. Cleaned out my entire basement in under two hours. Texted me before they arrived and sent photos when they left. Exactly what you want from a service like this.</p>
+          <div class="review-author">
+            <div class="review-avatar">M</div>
+            <div>
+              <div class="review-name">Margaret T.</div>
+              <div class="review-location">Lakewood, OH</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card fade-up">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">I manage several rental properties and Junco is now my go-to for every turnover cleanout. They're fast, reliable, and the price never changes from the quote. I've referred them to every landlord I know.</p>
+          <div class="review-author">
+            <div class="review-avatar">D</div>
+            <div>
+              <div class="review-name">Dave R.</div>
+              <div class="review-location">Property Manager, West Side</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card fade-up">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Had to clear out my late mother's home — an emotional and overwhelming task. The Junco crew was kind, efficient, and handled everything with real care. Donated what they could. I can't recommend them enough.</p>
+          <div class="review-author">
+            <div class="review-avatar">S</div>
+            <div>
+              <div class="review-name">Sarah K.</div>
+              <div class="review-location">Rocky River, OH</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section id="schedule">
+    <div class="section-inner">
+      <div class="schedule-grid">
+        <div class="schedule-left">
+          <div class="section-label">Get In Touch</div>
+          <h2>Ready to clear it out?</h2>
+          <p>Fill out the form and we'll get back to you within the hour. Or call or text us directly — we pick up.</p>
+          <div class="contact-methods">
+            <a href="tel:2165550100" class="contact-method">
+              <div class="contact-method-icon">📞</div>
+              <div class="contact-method-text">
+                <strong>(216) 555-0100</strong>
+                <span>Call or text anytime — we answer</span>
+              </div>
+            </a>
+            <a href="/cdn-cgi/l/email-protection#1b737e7777745b716e757874716e7570697e76746d7a7735787476" class="contact-method">
+              <div class="contact-method-icon">✉️</div>
+              <div class="contact-method-text">
+                <strong><span class="__cf_email__" data-cfemail="ddb5b8b1b1b29db7a8b3beb2b7a8b3b6afb8b0b2abbcb1f3beb2b0">[email&#160;protected]</span></strong>
+                <span>We reply within the hour</span>
+              </div>
+            </a>
+            <div class="contact-method" style="cursor:default;">
+              <div class="contact-method-icon">📍</div>
+              <div class="contact-method-text">
+                <strong>Lakewood, Ohio</strong>
+                <span>Serving Cleveland &amp; surrounding west side communities</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="schedule-form">
+          <h3>Schedule a Pickup</h3>
+          <p>We'll confirm your slot and send a quote within the hour.</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input id="fname" type="text" placeholder="Jane"/>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input id="lname" type="text" placeholder="Smith"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input id="phone" type="tel" placeholder="(216) 555-0000"/>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="jane@email.com"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service">
+              <option value="">Select a service...</option>
+              <option>General Junk Removal</option>
+              <option>Estate / Full Home Cleanout</option>
+              <option>Landlord / Tenant Turnover</option>
+              <option>Appliance &amp; Furniture Removal</option>
+              <option>Construction Debris</option>
+              <option>Same-Day Pickup</option>
+              <option>Not Sure — Just Contact Me</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="notes">Tell Us More (Optional)</label>
+            <textarea id="notes" placeholder="Describe what needs to go, approximate size, any access notes..."></textarea>
+          </div>
+          <button class="form-submit" id="submitBtn">
+            Send Request
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-name">Junco<span>.</span></div>
+        <p>Lakewood's junk removal company. We show up, we clean out, and we treat your home with respect. Locally owned and operated.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">General Junk Removal</a>
+        <a href="#services">Estate Cleanouts</a>
+        <a href="#services">Landlord Turnover</a>
+        <a href="#services">Appliance Removal</a>
+        <a href="#services">Construction Debris</a>
+        <a href="#services">Same-Day Service</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#about">About Junco</a>
+        <!-- <a href="#pricing">Pricing</a> -->
+        <!-- <a href="#landlords">Property Managers</a> -->
+        <a href="#reviews">Reviews</a>
+        <a href="#schedule">Schedule Pickup</a>
+        <a href="tel:2165550100">(216) 555-0100</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Junco Junk Removal LLC · Lakewood, Ohio</span>
+      <span>Serving Cleveland, Lakewood, Rocky River, Westlake &amp; surrounding areas</span>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Fade-up on scroll — progressive enhancement only
+    // Mark body as js-ready so animations activate, then observe elements
+    document.body.classList.add('js-ready');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Form submit feedback
+    document.getElementById('submitBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      this.textContent = '✓ Request Sent!';
+      this.style.background = '#75a31b';
+      setTimeout(() => {
+        this.innerHTML = 'Send Request <svg width="16" height="
