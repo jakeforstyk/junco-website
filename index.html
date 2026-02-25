@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Junco Junk Removal | Lakewood's Junk Removal Company</title>
   <meta name="description" content="Fast, reliable junk removal for Cleveland and Lakewood. Upfront pricing, same-day service, eco-friendly disposal. We handle everything — you just point."/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -47,7 +47,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--bg-base);
       color: var(--text-hi);
       overflow-x: hidden;
@@ -73,7 +73,7 @@
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo-bird { width: 36px; height: 36px; }
     .nav-logo-text {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 22px; font-weight: 700;
       color: var(--text-hi); letter-spacing: -0.3px;
     }
@@ -1061,27 +1061,35 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Navbar scroll effect
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
-
-    // Fade-up on scroll — progressive enhancement only
-    // Mark body as js-ready so animations activate, then observe elements
-    document.body.classList.add('js-ready');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
+      // Navbar scroll effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 20);
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // Form submit feedback
-    document.getElementById('submitBtn').addEventListener('click', function(e) {
-      e.preventDefault();
-      this.textContent = '✓ Request Sent!';
-      this.style.background = '#75a31b';
-      setTimeout(() => {
-        this.innerHTML = 'Send Request <svg width="16" height="
+  
+      // Fade-up on scroll — progressive enhancement only
+      // Mark body as js-ready so animations activate, then observe elements
+      document.body.classList.add('js-ready');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  
+      // Form submit feedback
+      document.getElementById('submitBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        this.textContent = '✓ Request Sent!';
+        this.style.background = '#75a31b';
+        setTimeout(() => {
+          // restore original button label + icon after a short delay
+          this.innerHTML = 'Send Request <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+          this.style.background = '';
+        }, 1800);
+      });
+    </script>
+  </body>
+  </html>
