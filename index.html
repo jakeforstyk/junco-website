@@ -5,31 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Junco Junk Removal | Lakewood's Junk Removal Company</title>
   <meta name="description" content="Fast, reliable junk removal for Cleveland and Lakewood. Upfront pricing, same-day service, eco-friendly disposal. We handle everything — you just point."/>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /*
-      DESIGN TOKENS 
-      --bg-base:      #1d212b  secondary — default section bg
-      --bg-deep:      #131720  secondary-dark — hero, footer, inset cards
-      --bg-raised:    #252b38  slightly lighter — card surfaces
-      --bg-hover:     #2d3444  borders, hover states
-      --primary:      #8ec322  lime green — CTAs, accents
-      --primary-dark: #75a31b  hover state for green
-      --on-primary:   #131720  text sitting ON green buttons
-      --text-hi:      #fafafa  headings, strong labels
-      --text-mid:     #b8c0cc  body copy, descriptions
-      --text-lo:      #6e7888  hints, placeholders, timestamps
-      --border:       #2d3444  card/section borders
-
-      WCAG AA contrast checks:
-      #fafafa on #1d212b  = 12.5:1  ✓
-      #fafafa on #131720  = 14.8:1  ✓
-      #b8c0cc on #1d212b  =  6.2:1  ✓
-      #8ec322 on #131720  =  5.9:1  ✓ (large text / icons)
-      #131720 on #8ec322  =  5.9:1  ✓ (button text)
-    */
     :root {
       --bg-base:      #1d212b;
       --bg-deep:      #131720;
@@ -53,7 +32,7 @@
       overflow-x: hidden;
     }
 
-    /* ─────────── NAVBAR ─────────── */
+    /* NAVBAR */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -63,13 +42,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(19, 23, 32, 0.97);
+      background: rgba(19,23,32,0.97);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       transition: box-shadow 0.3s;
     }
     nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.5); }
-
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo-bird { width: 36px; height: 36px; }
     .nav-logo-text {
@@ -78,7 +56,6 @@
       color: var(--text-hi); letter-spacing: -0.3px;
     }
     .nav-logo-text span { color: var(--primary); }
-
     .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
     .nav-links a {
       font-size: 14px; font-weight: 500;
@@ -86,7 +63,6 @@
       letter-spacing: 0.3px; transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--text-hi); }
-
     .nav-cta {
       background: var(--primary) !important;
       color: var(--on-primary) !important;
@@ -95,7 +71,7 @@
     }
     .nav-cta:hover { background: var(--primary-dark) !important; }
 
-    /* ─────────── BUTTONS ─────────── */
+    /* BUTTONS */
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--primary); color: var(--on-primary);
@@ -117,10 +93,9 @@
     }
     .btn-secondary:hover { border-color: var(--text-mid); background: rgba(255,255,255,0.04); }
 
-    /* ─────────── SHARED SECTION ─────────── */
+    /* SHARED */
     section { padding: 100px 40px; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
-
     .section-label {
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 12px; font-weight: 700;
@@ -132,12 +107,12 @@
       width: 24px; height: 2px; background: var(--primary);
     }
     .section-h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: clamp(32px, 4vw, 48px); font-weight: 700;
       color: var(--text-hi); line-height: 1.15; letter-spacing: -0.5px;
     }
 
-    /* ─────────── HERO ─────────── */
+    /* HERO */
     #home {
       min-height: 100vh; background: var(--bg-deep);
       position: relative; display: flex; align-items: center;
@@ -182,8 +157,8 @@
       letter-spacing: 1px; text-transform: uppercase;
     }
     .hero-h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(44px, 5vw, 68px); font-weight: 900;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(44px, 5vw, 68px); font-weight: 700;
       color: var(--text-hi); line-height: 1.08;
       letter-spacing: -1px; margin-bottom: 24px;
     }
@@ -201,20 +176,19 @@
     }
     .hero-trust-item { display: flex; flex-direction: column; }
     .hero-trust-number {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 24px; font-weight: 700;
       color: var(--text-hi); line-height: 1;
     }
     .hero-trust-label { font-size: 12px; color: var(--text-lo); margin-top: 4px; }
     .hero-trust-divider { width: 1px; height: 36px; background: var(--border); }
-
     .hero-card {
       background: var(--bg-raised);
       border: 1px solid var(--border);
       border-radius: 16px; padding: 32px;
     }
     .hero-card-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 20px; font-weight: 700;
       color: var(--text-hi); margin-bottom: 24px;
     }
@@ -234,9 +208,8 @@
     }
     .promise-text span { color: var(--text-mid); font-size: 13px; line-height: 1.5; }
 
-    /* ─────────── HOW IT WORKS ─────────── */
+    /* HOW IT WORKS */
     #how-it-works { background: var(--bg-raised); }
-
     .steps-grid {
       display: grid; grid-template-columns: repeat(3,1fr);
       gap: 40px; margin-top: 60px; position: relative;
@@ -256,27 +229,24 @@
       border: 2px solid var(--primary);
       border-radius: 50%; display: flex;
       align-items: center; justify-content: center;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 26px; font-weight: 700; color: var(--primary);
       margin: 0 auto 24px; position: relative; z-index: 1;
     }
     .step h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 20px; color: var(--text-hi); margin-bottom: 10px;
     }
     .step p { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
 
-    /* ─────────── SERVICES ─────────── */
+    /* SERVICES */
     #services { background: var(--bg-base); }
-
     .services-intro {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 80px; align-items: end; margin-bottom: 56px;
     }
     .services-sub { font-size: 16px; color: var(--text-mid); line-height: 1.75; font-weight: 300; }
-
     .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-
     .service-card {
       background: var(--bg-raised);
       border: 1px solid var(--border);
@@ -297,117 +267,14 @@
     .service-card:hover::after { transform: scaleX(1); }
     .service-icon { font-size: 28px; margin-bottom: 16px; display: block; }
     .service-card h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 18px; color: var(--text-hi); margin-bottom: 8px;
     }
     .service-card p { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
 
-    /* ─────────── PRICING ─────────── */
-    #pricing { background: var(--bg-deep); position: relative; overflow: hidden; }
-    #pricing::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 70% at 85% 50%, rgba(142,195,34,0.07) 0%, transparent 60%);
-    }
-    .pricing-intro {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: end;
-      margin-bottom: 56px; position: relative;
-    }
-    .pricing-sub { font-size: 16px; color: var(--text-mid); line-height: 1.75; font-weight: 300; }
-
-    .pricing-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; position: relative; }
-
-    .pricing-card {
-      background: var(--bg-raised); border: 1px solid var(--border);
-      border-radius: 12px; padding: 24px 20px;
-      text-align: center; transition: all 0.25s;
-    }
-    .pricing-card:hover {
-      border-color: var(--bg-hover);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.35);
-    }
-    .pricing-card.featured { background: var(--primary); border-color: var(--primary); }
-    .pricing-card.featured:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
-
-    .pricing-size {
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--text-lo); margin-bottom: 12px;
-    }
-    .pricing-card.featured .pricing-size { color: var(--on-primary); opacity: 0.65; }
-
-    .pricing-price {
-      font-family: 'Playfair Display', serif;
-      font-size: 34px; font-weight: 700;
-      color: var(--text-hi); line-height: 1; margin-bottom: 4px;
-    }
-    .pricing-card.featured .pricing-price { color: var(--on-primary); }
-
-    .pricing-range { font-size: 11px; color: var(--text-lo); margin-bottom: 14px; }
-    .pricing-card.featured .pricing-range { color: var(--on-primary); opacity: 0.7; }
-
-    .pricing-desc { font-size: 12px; color: var(--text-mid); line-height: 1.6; }
-    .pricing-card.featured .pricing-desc { color: var(--on-primary); opacity: 0.85; }
-
-    .pricing-note {
-      margin-top: 36px; padding: 20px 24px;
-      background: var(--bg-raised); border: 1px solid var(--border);
-      border-radius: 10px; display: flex; align-items: center; gap: 14px;
-    }
-    .pricing-note span { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
-    .pricing-note strong { color: var(--text-hi); }
-
-    /* ─────────── LANDLORDS ─────────── */
-    #landlords {
-      background: var(--bg-raised);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .landlord-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-
-    .landlord-perks { display: flex; flex-direction: column; gap: 16px; margin-top: 36px; }
-    .landlord-perk {
-      display: flex; align-items: flex-start; gap: 16px;
-      padding: 20px; background: var(--bg-deep);
-      border-radius: 10px; border: 1px solid var(--border);
-      transition: border-color 0.2s;
-    }
-    .landlord-perk:hover { border-color: var(--bg-hover); }
-    .perk-icon {
-      width: 40px; height: 40px;
-      background: rgba(142,195,34,0.10);
-      border: 1px solid rgba(142,195,34,0.20);
-      border-radius: 8px; display: flex;
-      align-items: center; justify-content: center;
-      font-size: 18px; flex-shrink: 0;
-    }
-    .perk-text strong { display: block; font-size: 14px; font-weight: 600; color: var(--text-hi); margin-bottom: 3px; }
-    .perk-text span { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
-
-    .landlord-cta-box {
-      background: var(--bg-deep); border: 1px solid var(--border);
-      border-radius: 16px; padding: 40px;
-    }
-    .landlord-cta-box h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 24px; color: var(--text-hi); margin-bottom: 16px; line-height: 1.3;
-    }
-    .landlord-cta-box > p { font-size: 14px; color: var(--text-mid); line-height: 1.7; margin-bottom: 28px; }
-
-    .landlord-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; }
-    .landlord-stat {
-      background: var(--bg-raised); border: 1px solid var(--border);
-      border-radius: 8px; padding: 16px; text-align: center;
-    }
-    .landlord-stat-num { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--primary); font-weight: 700; }
-    .landlord-stat-label { font-size: 11px; color: var(--text-lo); margin-top: 4px; }
-
-    /* ─────────── ABOUT ─────────── */
+    /* ABOUT */
     #about { background: var(--bg-base); }
-
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-
     .about-img-placeholder {
       background: var(--bg-raised); border: 2px dashed var(--border);
       border-radius: 16px; aspect-ratio: 4/3;
@@ -421,10 +288,8 @@
     }
     .about-img-bird { font-size: 64px; position: relative; z-index: 1; }
     .about-img-label { font-size: 13px; color: var(--text-lo); position: relative; z-index: 1; }
-
     .about-text p { font-size: 16px; color: var(--text-mid); line-height: 1.8; font-weight: 300; margin-bottom: 20px; }
     .about-text p:last-of-type { margin-bottom: 32px; }
-
     .about-values { display: flex; gap: 10px; flex-wrap: wrap; }
     .about-value {
       background: var(--bg-raised); border: 1px solid var(--border);
@@ -432,18 +297,16 @@
       font-size: 13px; font-weight: 500; color: var(--text-mid);
     }
 
-    /* ─────────── REVIEWS ─────────── */
+    /* REVIEWS */
     #reviews { background: var(--bg-raised); }
-
     .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
-
     .review-card {
       background: var(--bg-deep); border: 1px solid var(--border);
       border-radius: 12px; padding: 28px; position: relative;
     }
     .review-card::before {
       content: '"'; position: absolute; top: 16px; right: 22px;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 72px; color: rgba(142,195,34,0.12); line-height: 1;
     }
     .review-stars { color: var(--primary); font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; }
@@ -455,26 +318,24 @@
       align-items: center; justify-content: center;
       font-size: 14px; font-weight: 700;
       color: var(--on-primary);
-      font-family: 'Playfair Display', serif;
+      font-family: 'Space Grotesk', sans-serif;
     }
     .review-name { font-size: 13px; font-weight: 600; color: var(--text-hi); }
     .review-location { font-size: 12px; color: var(--text-lo); }
 
-    /* ─────────── SCHEDULE ─────────── */
+    /* SCHEDULE */
     #schedule { background: var(--bg-deep); position: relative; overflow: hidden; }
     #schedule::before {
       content: ''; position: absolute; inset: 0;
       background: radial-gradient(ellipse 50% 80% at 5% 50%, rgba(142,195,34,0.05), transparent 60%);
     }
     .schedule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; position: relative; }
-
     .schedule-left h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: clamp(32px,4vw,48px); color: var(--text-hi);
       line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 20px;
     }
     .schedule-left > p { font-size: 16px; color: var(--text-mid); line-height: 1.75; font-weight: 300; margin-bottom: 36px; }
-
     .contact-methods { display: flex; flex-direction: column; gap: 12px; }
     .contact-method {
       display: flex; align-items: center; gap: 14px;
@@ -493,14 +354,15 @@
     }
     .contact-method-text strong { display: block; font-size: 14px; font-weight: 600; color: var(--text-hi); margin-bottom: 2px; }
     .contact-method-text span { font-size: 12px; color: var(--text-lo); }
-
     .schedule-form {
       background: var(--bg-raised); border: 1px solid var(--border);
       border-radius: 16px; padding: 36px;
     }
-    .schedule-form h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--text-hi); margin-bottom: 6px; }
+    .schedule-form h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px; color: var(--text-hi); margin-bottom: 6px;
+    }
     .schedule-form > p { font-size: 13px; color: var(--text-lo); margin-bottom: 28px; }
-
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .form-group { margin-bottom: 14px; }
     .form-group label {
@@ -513,7 +375,7 @@
     .form-group textarea {
       width: 100%; background: var(--bg-deep);
       border: 1px solid var(--border); border-radius: 8px;
-      padding: 12px 14px; font-family: 'DM Sans', sans-serif;
+      padding: 12px 14px; font-family: 'Inter', sans-serif;
       font-size: 14px; color: var(--text-hi); outline: none;
       transition: border-color 0.2s;
       -webkit-appearance: none; appearance: none;
@@ -526,11 +388,10 @@
     .form-group select { cursor: pointer; }
     .form-group select option { background: var(--bg-deep); color: var(--text-hi); }
     .form-group textarea { resize: vertical; min-height: 90px; }
-
     .form-submit {
       width: 100%; background: var(--primary); color: var(--on-primary);
       border: none; padding: 14px; border-radius: 8px;
-      font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
+      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700;
       cursor: pointer; transition: all 0.2s; margin-top: 6px;
       display: flex; align-items: center; justify-content: center; gap: 8px;
     }
@@ -539,7 +400,7 @@
       box-shadow: 0 8px 24px rgba(142,195,34,0.28);
     }
 
-    /* ─────────── FOOTER ─────────── */
+    /* FOOTER */
     footer {
       background: #0c0f16;
       padding: 56px 40px 40px;
@@ -550,7 +411,7 @@
       display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px;
     }
     .footer-brand-name {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 22px; font-weight: 700; color: var(--text-hi);
     }
     .footer-brand-name span { color: var(--primary); }
@@ -571,10 +432,8 @@
     }
     .footer-bottom span { font-size: 13px; color: var(--text-lo); }
 
-    /* ─────────── ANIMATIONS ─────────── */
-    /* Default: content always visible. Animation is progressive enhancement only. */
+    /* ANIMATIONS */
     .fade-up { opacity: 1; transform: none; }
-    /* js-ready class added by script below — only then do we animate */
     .js-ready .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .js-ready .fade-up.visible { opacity: 1; transform: translateY(0); }
     .js-ready .fade-up:nth-child(2) { transition-delay: 0.1s; }
@@ -583,7 +442,7 @@
     .js-ready .fade-up:nth-child(5) { transition-delay: 0.4s; }
     .js-ready .fade-up:nth-child(6) { transition-delay: 0.5s; }
 
-    /* ─────────── RESPONSIVE ─────────── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
@@ -594,9 +453,6 @@
       .steps-grid::before { display: none; }
       .services-intro { grid-template-columns: 1fr; gap: 20px; }
       .services-grid { grid-template-columns: 1fr 1fr; }
-      .pricing-grid { grid-template-columns: 1fr 1fr; }
-      .pricing-intro { grid-template-columns: 1fr; gap: 20px; }
-      .landlord-grid { grid-template-columns: 1fr; gap: 40px; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .reviews-grid { grid-template-columns: 1fr; }
       .schedule-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -623,8 +479,6 @@
     <ul class="nav-links">
       <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#services">Services</a></li>
-      <!-- <li><a href="#pricing">Pricing</a></li> -->
-      <!-- <li><a href="#landlords">Property Managers</a></li> -->
       <li><a href="#about">About</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#schedule" class="nav-cta">Schedule Pickup</a></li>
@@ -648,7 +502,7 @@
             Schedule a Pickup
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="tel:2165550100" class="btn-secondary">📞 (216) 555-0100</a>
+          <a href="tel:2165550100" class="btn-secondary">&#128222; (216) 555-0100</a>
         </div>
         <div class="hero-trust">
           <div class="hero-trust-item">
@@ -670,21 +524,21 @@
       <div class="hero-card">
         <p class="hero-card-title">Our 3 Promises to You</p>
         <div class="hero-promise">
-          <div class="promise-icon">⏰</div>
+          <div class="promise-icon">&#9200;</div>
           <div class="promise-text">
             <strong>We show up on time</strong>
             <span>You'll get a text before we arrive. No waiting around wondering.</span>
           </div>
         </div>
         <div class="hero-promise">
-          <div class="promise-icon">💬</div>
+          <div class="promise-icon">&#128172;</div>
           <div class="promise-text">
             <strong>No surprise pricing</strong>
             <span>We quote before we start. What we say is what you pay. Period.</span>
           </div>
         </div>
         <div class="hero-promise">
-          <div class="promise-icon">✅</div>
+          <div class="promise-icon">&#9989;</div>
           <div class="promise-text">
             <strong>We finish the job</strong>
             <span>We don't leave until it's done. If something's missed, we come back.</span>
@@ -731,39 +585,38 @@
       </div>
       <div class="services-grid">
         <div class="service-card fade-up">
-          <span class="service-icon">🏠</span>
+          <span class="service-icon">&#127968;</span>
           <h3>General Junk Removal</h3>
           <p>Furniture, mattresses, electronics, yard waste, old clothing — if it's clutter, we'll clear it out. No job too small.</p>
         </div>
         <div class="service-card fade-up">
-          <span class="service-icon">🏡</span>
-          <h3>Estate & Full Home Cleanouts</h3>
+          <span class="service-icon">&#127969;</span>
+          <h3>Estate &amp; Full Home Cleanouts</h3>
           <p>Dealing with a loved one's home or downsizing a lifetime of belongings? We handle full cleanouts with care and efficiency.</p>
         </div>
         <div class="service-card fade-up">
-          <span class="service-icon">🔑</span>
-          <h3>Landlord & Tenant Turnover</h3>
+          <span class="service-icon">&#128273;</span>
+          <h3>Landlord &amp; Tenant Turnover</h3>
           <p>Tenant left behind furniture, trash, or appliances? We specialize in fast, reliable turnover cleanouts so you can re-rent quickly.</p>
         </div>
         <div class="service-card fade-up">
-          <span class="service-icon">🛋️</span>
-          <h3>Appliance & Furniture Removal</h3>
+          <span class="service-icon">&#128715;</span>
+          <h3>Appliance &amp; Furniture Removal</h3>
           <p>Fridges, washers, dryers, couches, bed frames — we remove heavy items safely without damaging your floors or walls.</p>
         </div>
         <div class="service-card fade-up">
-          <span class="service-icon">🧱</span>
+          <span class="service-icon">&#129521;</span>
           <h3>Construction Debris</h3>
           <p>Renovation leftovers, drywall, lumber, tile, concrete — we haul construction debris so your project site stays clean.</p>
         </div>
         <div class="service-card fade-up">
-          <span class="service-icon">⚡</span>
+          <span class="service-icon">&#9889;</span>
           <h3>Same-Day Service</h3>
           <p>Need it gone today? We offer same-day pickups based on availability. Call or text us in the morning and we'll do our best to be there.</p>
         </div>
       </div>
     </div>
   </section>
-
 
   <!--
   PRICING SECTION — uncomment to restore
@@ -786,25 +639,21 @@
         <div class="pricing-card fade-up">
           <div class="pricing-size">Quarter Load</div>
           <div class="pricing-price">$200</div>
-          <div class="pricing-range">$175 – $225</div>
-          <div class="pricing-desc">2–3 pieces, small apartment</div>
+          <div class="pricing-range">$175 - $225</div>
+          <div class="pricing-desc">2-3 pieces, small apartment</div>
         </div>
         <div class="pricing-card featured fade-up">
           <div class="pricing-size">Half Load</div>
           <div class="pricing-price">$315</div>
-          <div class="pricing-range">$275 – $350 · Most Popular</div>
+          <div class="pricing-range">$275 - $350 - Most Popular</div>
           <div class="pricing-desc">Studio or 1BR cleanout, partial basement</div>
         </div>
         <div class="pricing-card fade-up">
           <div class="pricing-size">Full Truck</div>
           <div class="pricing-price">$525</div>
-          <div class="pricing-range">$475 – $575</div>
+          <div class="pricing-range">$475 - $575</div>
           <div class="pricing-desc">Full 2BR or large estate cleanout</div>
         </div>
-      </div>
-      <div class="pricing-note">
-        <span style="font-size:22px; flex-shrink:0;">🌿</span>
-        <span><strong>Eco-friendly disposal included.</strong> We sort every load for donation, recycling, and responsible disposal. Good for your conscience, good for Lakewood.</span>
       </div>
     </div>
   </section>
@@ -818,62 +667,6 @@
         <div>
           <div class="section-label">Property Managers</div>
           <h2 class="section-h2">Your most reliable cleanout crew.</h2>
-          <div class="landlord-perks">
-            <div class="landlord-perk fade-up">
-              <div class="perk-icon">📅</div>
-              <div class="perk-text">
-                <strong>Priority scheduling</strong>
-                <span>Landlord accounts get first access to same-day and next-day slots. Tenant out Friday? We're there Monday morning.</span>
-              </div>
-            </div>
-            <div class="landlord-perk fade-up">
-              <div class="perk-icon">💰</div>
-              <div class="perk-text">
-                <strong>Volume discounts</strong>
-                <span>15–20% off standard rates for recurring accounts. The more you use us, the more you save.</span>
-              </div>
-            </div>
-            <div class="landlord-perk fade-up">
-              <div class="perk-icon">📸</div>
-              <div class="perk-text">
-                <strong>Photo confirmation every time</strong>
-                <span>We send before and after photos on every job. Your records stay clean, your properties stay clean.</span>
-              </div>
-            </div>
-            <div class="landlord-perk fade-up">
-              <div class="perk-icon">🤝</div>
-              <div class="perk-text">
-                <strong>First cleanout on us</strong>
-                <span>We're so confident in our work we'll do your first job at no charge. Let the results speak for themselves.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="landlord-cta-box fade-up">
-          <h3>Built for Lakewood landlords. Available across the west side.</h3>
-          <p>With 57% of Lakewood's housing renter-occupied and turnover happening constantly, you need a cleanout crew that shows up and gets it done. That's us.</p>
-          <div class="landlord-stats">
-            <div class="landlord-stat">
-              <div class="landlord-stat-num">Same</div>
-              <div class="landlord-stat-label">Day Availability</div>
-            </div>
-            <div class="landlord-stat">
-              <div class="landlord-stat-num">20%</div>
-              <div class="landlord-stat-label">Account Discount</div>
-            </div>
-            <div class="landlord-stat">
-              <div class="landlord-stat-num">Free</div>
-              <div class="landlord-stat-label">First Cleanout</div>
-            </div>
-            <div class="landlord-stat">
-              <div class="landlord-stat-num">100%</div>
-              <div class="landlord-stat-label">Job Guarantee</div>
-            </div>
-          </div>
-          <a href="#schedule" class="btn-primary" style="width:100%; justify-content:center;">
-            Set Up a Landlord Account
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
         </div>
       </div>
     </div>
@@ -885,7 +678,7 @@
     <div class="section-inner">
       <div class="about-grid">
         <div class="about-img-placeholder">
-          <div class="about-img-bird">🐦</div>
+          <div class="about-img-bird">&#128038;</div>
           <span class="about-img-label">Your photo here</span>
         </div>
         <div class="about-text">
@@ -895,10 +688,10 @@
           <p>We're named after the junco bird — small, scrappy, and built for Ohio winters. It shows up when others don't, works efficiently, and doesn't make a fuss. That's exactly what we do for our customers every single day.</p>
           <p>We're based right here in Lakewood. When you call us, you're talking to a neighbor — not a call center. We know these streets, we care about this community, and we'll treat your home with the same respect we'd want for our own.</p>
           <div class="about-values">
-            <span class="about-value">🏠 Locally owned</span>
-            <span class="about-value">♻️ Eco-friendly disposal</span>
-            <span class="about-value">📍 Lakewood based</span>
-            <span class="about-value">✅ Job guarantee</span>
+            <span class="about-value">&#127968; Locally owned</span>
+            <span class="about-value">&#9851; Eco-friendly disposal</span>
+            <span class="about-value">&#128205; Lakewood based</span>
+            <span class="about-value">&#9989; Job guarantee</span>
           </div>
         </div>
       </div>
@@ -912,7 +705,7 @@
       <h2 class="section-h2">The neighbors are talking.</h2>
       <div class="reviews-grid">
         <div class="review-card fade-up">
-          <div class="review-stars">★★★★★</div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="review-text">Called in the morning, they were there by noon. Cleaned out my entire basement in under two hours. Texted me before they arrived and sent photos when they left. Exactly what you want from a service like this.</p>
           <div class="review-author">
             <div class="review-avatar">M</div>
@@ -923,7 +716,7 @@
           </div>
         </div>
         <div class="review-card fade-up">
-          <div class="review-stars">★★★★★</div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="review-text">I manage several rental properties and Junco is now my go-to for every turnover cleanout. They're fast, reliable, and the price never changes from the quote. I've referred them to every landlord I know.</p>
           <div class="review-author">
             <div class="review-avatar">D</div>
@@ -934,7 +727,7 @@
           </div>
         </div>
         <div class="review-card fade-up">
-          <div class="review-stars">★★★★★</div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="review-text">Had to clear out my late mother's home — an emotional and overwhelming task. The Junco crew was kind, efficient, and handled everything with real care. Donated what they could. I can't recommend them enough.</p>
           <div class="review-author">
             <div class="review-avatar">S</div>
@@ -958,21 +751,21 @@
           <p>Fill out the form and we'll get back to you within the hour. Or call or text us directly — we pick up.</p>
           <div class="contact-methods">
             <a href="tel:2165550100" class="contact-method">
-              <div class="contact-method-icon">📞</div>
+              <div class="contact-method-icon">&#128222;</div>
               <div class="contact-method-text">
                 <strong>(216) 555-0100</strong>
                 <span>Call or text anytime — we answer</span>
               </div>
             </a>
-            <a href="/cdn-cgi/l/email-protection#1b737e7777745b716e757874716e7570697e76746d7a7735787476" class="contact-method">
-              <div class="contact-method-icon">✉️</div>
+            <a href="mailto:hello@juncojunkremoval.com" class="contact-method">
+              <div class="contact-method-icon">&#9993;</div>
               <div class="contact-method-text">
-                <strong><span class="__cf_email__" data-cfemail="ddb5b8b1b1b29db7a8b3beb2b7a8b3b6afb8b0b2abbcb1f3beb2b0">[email&#160;protected]</span></strong>
+                <strong>hello@juncojunkremoval.com</strong>
                 <span>We reply within the hour</span>
               </div>
             </a>
             <div class="contact-method" style="cursor:default;">
-              <div class="contact-method-icon">📍</div>
+              <div class="contact-method-icon">&#128205;</div>
               <div class="contact-method-text">
                 <strong>Lakewood, Ohio</strong>
                 <span>Serving Cleveland &amp; surrounding west side communities</span>
@@ -1048,48 +841,43 @@
       <div class="footer-col">
         <h4>Company</h4>
         <a href="#about">About Junco</a>
-        <!-- <a href="#pricing">Pricing</a> -->
-        <!-- <a href="#landlords">Property Managers</a> -->
         <a href="#reviews">Reviews</a>
         <a href="#schedule">Schedule Pickup</a>
         <a href="tel:2165550100">(216) 555-0100</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Junco Junk Removal LLC · Lakewood, Ohio</span>
+      <span>&#169; 2026 Junco Junk Removal LLC &middot; Lakewood, Ohio</span>
       <span>Serving Cleveland, Lakewood, Rocky River, Westlake &amp; surrounding areas</span>
     </div>
   </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script>
-      // Navbar scroll effect
-      const navbar = document.getElementById('navbar');
-      window.addEventListener('scroll', () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 20);
+  <script>
+    var navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    document.body.classList.add('js-ready');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-  
-      // Fade-up on scroll — progressive enhancement only
-      // Mark body as js-ready so animations activate, then observe elements
-      document.body.classList.add('js-ready');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  
-      // Form submit feedback
-      document.getElementById('submitBtn').addEventListener('click', function(e) {
-        e.preventDefault();
-        this.textContent = '✓ Request Sent!';
-        this.style.background = '#75a31b';
-        setTimeout(() => {
-          // restore original button label + icon after a short delay
-          this.innerHTML = 'Send Request <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-          this.style.background = '';
-        }, 1800);
-      });
-    </script>
-  </body>
-  </html>
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    document.getElementById('submitBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      var btn = this;
+      btn.textContent = 'Request Sent!';
+      btn.style.background = '#75a31b';
+      setTimeout(function() {
+        btn.textContent = 'Send Request';
+        btn.style.background = '';
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
