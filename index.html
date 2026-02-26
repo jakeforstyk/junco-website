@@ -985,32 +985,34 @@
             </div>
           </div>
         </div>
-        <div class="schedule-form">
+        <form class="schedule-form" name="schedule-pickup" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="schedule-pickup"/>
+          <p class="hidden" style="display:none;"><label>Don't fill this out: <input name="bot-field"/></label></p>
           <h3>Schedule a Pickup</h3>
           <p>We'll confirm your slot and send a quote within the hour.</p>
           <div class="form-row">
             <div class="form-group">
               <label for="fname">First Name</label>
-              <input id="fname" type="text" placeholder="Jane"/>
+              <input id="fname" name="first-name" type="text" placeholder="Jane" required/>
             </div>
             <div class="form-group">
               <label for="lname">Last Name</label>
-              <input id="lname" type="text" placeholder="Smith"/>
+              <input id="lname" name="last-name" type="text" placeholder="Smith" required/>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input id="phone" type="tel" placeholder="(440) 555-1000"/>
+              <input id="phone" name="phone" type="tel" placeholder="(440) 555-1000" required/>
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input id="email" type="email" placeholder="hello@juncojunkremoval.com"/>
+              <input id="email" name="email" type="email" placeholder="hello@juncojunkremoval.com"/>
             </div>
           </div>
           <div class="form-group">
             <label for="service">Service Needed</label>
-            <select id="service">
+            <select id="service" name="service" required>
               <option value="">Select a service...</option>
               <option>General Junk Removal</option>
               <option>Single Item Removal</option>
@@ -1022,13 +1024,13 @@
           </div>
           <div class="form-group">
             <label for="notes">Tell Us More (Optional)</label>
-            <textarea id="notes" placeholder="Describe what needs to go, approximate size, any access notes..."></textarea>
+            <textarea id="notes" name="notes" placeholder="Describe what needs to go, approximate size, any access notes..."></textarea>
           </div>
-          <button class="form-submit" id="submitBtn">
+          <button type="submit" class="form-submit" id="submitBtn">
             Send Request
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-        </div>
+        </form>
       </div>
     </div>
   </section>
@@ -1092,15 +1094,45 @@
       });
     });
 
-    document.getElementById('submitBtn').addEventListener('click', function(e) {
+    var form = document.querySelector('form[name="schedule-pickup"]');
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
-      var btn = this;
-      btn.textContent = 'Request Sent!';
-      btn.style.background = '#b8912e';
-      setTimeout(function() {
-        btn.textContent = 'Send Request';
-        btn.style.background = '';
-      }, 3000);
+      var btn = document.getElementById('submitBtn');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      var formData = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      }).then(function(response) {
+        if (response.ok) {
+          btn.textContent = 'Request Sent!';
+          btn.style.background = '#b8912e';
+          form.reset();
+          setTimeout(function() {
+            btn.innerHTML = 'Send Request <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 4000);
+        } else {
+          btn.textContent = 'Something went wrong — try calling us';
+          btn.style.background = '#c0392b';
+          btn.disabled = false;
+          setTimeout(function() {
+            btn.innerHTML = 'Send Request <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+            btn.style.background = '';
+          }, 4000);
+        }
+      }).catch(function() {
+        btn.textContent = 'Something went wrong — try calling us';
+        btn.style.background = '#c0392b';
+        btn.disabled = false;
+        setTimeout(function() {
+          btn.innerHTML = 'Send Request <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+          btn.style.background = '';
+        }, 4000);
+      });
     });
   </script>
 </body>
