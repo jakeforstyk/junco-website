@@ -566,6 +566,22 @@
     }
     .footer-bottom span { font-size: 13px; color: rgba(250,245,232,0.35); }
 
+    /* TOAST */
+    .toast {
+      position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(100px);
+      padding: 16px 28px; border-radius: 10px;
+      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500;
+      color: var(--white); z-index: 200;
+      display: flex; align-items: center; gap: 10px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none; max-width: 90vw;
+    }
+    .toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+    .toast.success { background: #1b6e3d; }
+    .toast.error { background: #9b2c2c; }
+    .toast-icon { font-size: 20px; flex-shrink: 0; }
+
     /* ANIMATIONS */
     .fade-up { opacity: 1; transform: none; }
     .js-ready .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -1067,7 +1083,23 @@
     </div>
   </footer>
 
+  <div class="toast" id="toast">
+    <span class="toast-icon"></span>
+    <span class="toast-msg"></span>
+  </div>
+
   <script>
+    function showToast(type, message) {
+      var toast = document.getElementById('toast');
+      var icon = toast.querySelector('.toast-icon');
+      var msg = toast.querySelector('.toast-msg');
+      toast.className = 'toast ' + type;
+      icon.textContent = type === 'success' ? '\u2713' : '\u2717';
+      msg.textContent = message;
+      toast.classList.add('visible');
+      setTimeout(function() { toast.classList.remove('visible'); }, 5000);
+    }
+
     var navbar = document.getElementById('navbar');
     window.addEventListener('scroll', function() {
       navbar.classList.toggle('scrolled', window.scrollY > 20);
@@ -1095,6 +1127,7 @@
     });
 
     var form = document.querySelector('form[name="schedule-pickup"]');
+    var btnHTML = document.getElementById('submitBtn').innerHTML;
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       var btn = document.getElementById('submitBtn');
@@ -1107,31 +1140,17 @@
         body: new URLSearchParams(formData).toString()
       }).then(function(response) {
         if (response.ok) {
-          btn.textContent = 'Request Sent!';
-          btn.style.background = '#b8912e';
           form.reset();
-          setTimeout(function() {
-            btn.innerHTML = 'Send Request <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-            btn.style.background = '';
-            btn.disabled = false;
-          }, 4000);
+          showToast('success', 'Request submitted! We\'ll reach out to you shortly.');
         } else {
-          btn.textContent = 'Something went wrong — try calling us';
-          btn.style.background = '#c0392b';
-          btn.disabled = false;
-          setTimeout(function() {
-            btn.innerHTML = 'Send Request <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-            btn.style.background = '';
-          }, 4000);
+          showToast('error', 'Something went wrong. Please call us at (440) 273-8231.');
         }
-      }).catch(function() {
-        btn.textContent = 'Something went wrong — try calling us';
-        btn.style.background = '#c0392b';
+        btn.innerHTML = btnHTML;
         btn.disabled = false;
-        setTimeout(function() {
-          btn.innerHTML = 'Send Request <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-          btn.style.background = '';
-        }, 4000);
+      }).catch(function() {
+        showToast('error', 'Something went wrong. Please call us at (440) 273-8231.');
+        btn.innerHTML = btnHTML;
+        btn.disabled = false;
       });
     });
   </script>
